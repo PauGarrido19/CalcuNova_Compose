@@ -29,7 +29,6 @@ fun CalculatorScreen(
     oscuro: Boolean = false,
     onModo: () -> Unit = {},
     onSalir: () -> Unit = {},
-    viewModel: CalculatorViewModel = viewModel()
 ) {
     val colores = MaterialTheme.colorScheme
     var mostrarInfo by remember { mutableStateOf(false) }
@@ -87,14 +86,13 @@ fun CalculatorScreen(
             horizontalAlignment = Alignment.End
         ) {
             Text(
-                text = viewModel.historyText,
+                text = "12+7",
                 fontSize = 24.sp,
                 maxLines = 1,
                 color = colores.onSurface,
-                modifier = Modifier.alpha(0.6f)
             )
             Text(
-                text = viewModel.displayText,
+                text = "19",
                 fontSize = 56.sp,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
@@ -132,7 +130,7 @@ fun CalculatorScreen(
                             else -> colores.secondaryContainer to colores.onSecondaryContainer
                         }
                         Button(
-                            onClick = { viewModel.onButtonClick(simbolo) },
+                            onClick = {},
                             shape = RoundedCornerShape(16.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = fondo,
