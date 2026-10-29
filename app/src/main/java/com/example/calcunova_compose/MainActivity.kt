@@ -34,6 +34,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     NavHost(navController = nav, startDestination = "splash") {
+
                         composable("splash") {
                             SplashScreen(
                                 oscuro = oscuro,
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
                                 onEntrar = { nav.navigate("calculadora") }
                             )
                         }
+
                         composable("calculadora") {
                             CalculatorScreen(
                                 oscuro = oscuro,
@@ -48,57 +50,9 @@ class MainActivity : ComponentActivity() {
                                 onSalir = { nav.navigate("despedida") }
                             )
                         }
-                        composable("despedida") {
-                            Text("Despedida") // la hacemos en el siguiente paso
-                        }
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun SplashScreen(oscuro: Boolean, onModo: () -> Unit, onEntrar: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .systemBarsPadding()
-            .padding(24.dp)
-    ) {
-        Box(modifier = Modifier.align(Alignment.TopEnd)) {
-            TextButton(onClick = onModo) {
-                Text(if (oscuro) "☀️" else "🌙", fontSize = 28.sp)
-            }
-        }
-
-        Column(
-            modifier = Modifier.align(Alignment.Center),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("➕➖✖️➗", fontSize = 48.sp)
-            Spacer(Modifier.height(24.dp))
-            Text(
-                "CalcuNova",
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
-            )
-            Text("Calculadora básica", fontSize = 18.sp)
-            Spacer(Modifier.height(32.dp))
-            Text("Creado por", fontSize = 14.sp)
-            Text("Nombre 1 · Nombre 2", fontSize = 16.sp)
-            Text("Curso · 2026", fontSize = 14.sp)
-        }
-
-        Button(
-            onClick = onEntrar,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .height(64.dp)
-        ) {
-            Text("Entrar", fontSize = 20.sp)
         }
     }
 }
